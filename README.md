@@ -1,55 +1,67 @@
 # ClaudeDesk
 
-AI-powered desktop coding assistant with multi-provider support and Cursor-style IDE layout.
+基于 Electron + Vue 3 的 AI 桌面编程助手，支持多 AI 提供商、Cursor 风格 IDE 布局。
 
-## Features
+## 功能特性
 
-- **Multi-Provider AI** — Anthropic (Claude), OpenAI (GPT), DeepSeek, and custom OpenAI-compatible endpoints
-- **Tool Use** — AI can read/write files, search code, list directories, and execute commands
-- **IDE Layout** — ActivityBar + File Explorer + Tabbed Editor + Chat panel (like Cursor/Trae)
-- **Conversation History** — Full-text search, export to Markdown/JSON
-- **Context Tracking** — Real-time token usage and cost estimation per conversation
-- **i18n** — Chinese and English with one-click switching
-- **Resizable Panels** — Drag handles to resize, Ctrl+B/Ctrl+J to toggle
+- **多提供商支持** — Anthropic (Claude)、OpenAI (GPT)、DeepSeek、以及自定义 OpenAI 兼容端点
+- **Tool Use 工具调用** — AI 可自主读写文件、搜索代码、列出目录、执行终端命令
+- **IDE 布局** — ActivityBar 活动栏 + 文件浏览器 + 多 Tab 编辑器 + 聊天面板（类 Cursor/Trae 风格）
+- **对话历史** — 全文搜索、导出 Markdown / JSON
+- **上下文追踪** — 实时 Token 用量与费用估算
+- **国际化** — 中英文一键切换
+- **可拖拽面板** — 拖拽调整宽度，`Ctrl+B` / `Ctrl+J` 一键折叠面板
+- **文件修改提示** — AI 修改文件后自动刷新编辑器并显示变更卡片
 
-## Quick Start
+## 快速开始
 
 ```bash
 npm install
 npm run dev
 ```
 
-1. Go to **Settings** → Add a profile with your API key
-2. **Files** tab → Open Folder to set a working directory
-3. Start chatting — AI can read/write files in your working directory
+1. 打开 **Settings** → 添加 API Key 配置
+2. 左侧 **Files** 标签 → Open Folder 设置工作目录
+3. 开始对话 — AI 可直接读写工作目录中的文件
 
-## Keyboard Shortcuts
+## 快捷键
 
-| Key | Action |
-|-----|--------|
-| `Ctrl+B` | Toggle left panel |
-| `Ctrl+J` | Toggle right chat panel |
-| `Ctrl+Shift+E` | Switch to Explorer |
-| `Ctrl+Shift+H` | Switch to Chats |
+| 快捷键 | 功能 |
+|--------|------|
+| `Ctrl+B` | 折叠/展开左侧面板 |
+| `Ctrl+J` | 折叠/展开右侧聊天面板 |
+| `Ctrl+Shift+E` | 切换到文件浏览器 |
+| `Ctrl+Shift+H` | 切换到对话列表 |
 
-## Project Structure
+## 项目结构
 
 ```
 claudedesk/
-├── electron/          # Main process (Node.js)
-│   ├── ai/            # AI provider adapters
-│   ├── db/            # SQLite database layer
-│   ├── ipc/           # IPC handlers
-│   ├── tools/         # Tool use definitions & executor
-│   └── security/      # API key encryption
-├── src/               # Renderer (Vue 3)
-│   ├── components/    # UI components
-│   ├── stores/        # Pinia state management
-│   ├── locales/       # i18n translations
-│   └── views/         # Page views
-└── shared/            # Shared types & IPC channels
+├── electron/          # 主进程 (Node.js)
+│   ├── ai/            # AI 提供商适配器
+│   ├── db/            # SQLite 数据库层
+│   ├── ipc/           # IPC 通信处理
+│   ├── tools/         # Tool Use 工具定义与执行器
+│   └── security/      # API Key 加密存储
+├── src/               # 渲染进程 (Vue 3)
+│   ├── components/    # UI 组件
+│   ├── stores/        # Pinia 状态管理
+│   ├── locales/       # 中英文语言包
+│   └── views/         # 页面视图
+└── shared/            # 共享类型与 IPC 通道定义
 ```
 
-## License
+## 技术栈
+
+| 层 | 技术 |
+|----|------|
+| 桌面框架 | Electron 33 |
+| 前端 | Vue 3 + TypeScript + Pinia + Naive UI |
+| 数据库 | SQLite (sql.js) |
+| AI SDK | @anthropic-ai/sdk + openai |
+| 国际化 | vue-i18n |
+| 构建 | electron-vite + electron-builder |
+
+## 许可证
 
 MIT
